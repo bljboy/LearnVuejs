@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+      .active {
+          color: red;
+      }
+  </style>
+</head>
+<body>
+<!--作业需求：点击列表中德哪一项，那么该项得文字变成红色-->
+<div id="app">
+  {{text}}
+  <ul>
+    <li v-on:click="btnClick" v-for="(m,index) in movies" :class="{active:isActive}">{{index}}-{{m}}</li>
+  </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      movies: ['海王', '海尔兄弟', '火影忍者', '进击的巨人'],
+      text: "123",
+      isActive: true,
+    },
+    methods: {
+      btnClick() {
+
+      },
+      getClasses() {
+
+      }
+    }
+  })
+</script>
+</body>
+</html>

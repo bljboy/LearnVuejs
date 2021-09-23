@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">{{message}}</div>
+<script src="../js/vue.js"></script>
+<script>
+    //let变量/const常量
+    const app = new Vue({
+        el:'#app',//用于挂载要管理的元素
+        data:{  //定义数据
+            message:'我爱你。',
+            image:"https://p4.img.cctvpic.com/photoAlbum/photo/2021/09/12/PHOTpqch9GfX2Wf5iXipUAIt210912_1000x2000.jpg"
+        }
+    });
+</script>
+</body>
+</html>

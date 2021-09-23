@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<script>
+  //ES5之前因为if何for都没有块级作用域的概念，所以在很多时候，我们都必须借助于function的作用域来解决应用外面的变量的问题。
+
+
+  // //3.没有块级作用域引起的问题，for得块级
+  // 为什么闭包可以解决问题：函数是一个作用域。
+  const btns = document.getElementsByTagName('button');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      console.log('第' + i + '个按钮');
+    })
+  }
+  //1.情况一：ES5中没有使用闭包（错误的方式）
+  i = 0;
+  {
+    btns[i].addEventListener('click', function () {
+      console.log('第' + i + '个按钮');
+    })
+  }
+
+  {
+    btns[i].addEventListener('click', function () {
+      console.log('第' + i + '个按钮');
+    })
+  }
+  {
+    btns[i].addEventListener('click', function () {
+      console.log('第' + i + '个按钮');
+    })
+  }
+
+
+  //2.情况二：ES5中使用闭包（）
+  var btns = document.getElementsByTagName('button');
+  for (var i = 0; i < btns.length; i++) {
+    (function (num) {
+      btns[i].addEventListener('click', function () {
+        console.log('第' + num + '个按钮');
+      })
+    })(i)
+  }
+
+  i = 5;
+  function (i) {
+    btns[i].addEventListener('click', function () {
+      console.log('第' + i + '个按钮');
+    })
+  }()
+
+  function (i) {
+    btns[i].addEventListener('click', function () {
+      console.log('第' + i + '个按钮');
+    })
+  }()
+
+  function (i) {
+    btns[i].addEventListener('click', function () {
+      console.log('第' + i + '个按钮');
+    })
+  }()
+
+  //ES6中的let
+  const btns = document.getElementsByTagName('button');
+  for (let i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      console.log('第' + i + '个按钮');
+    })
+  }
+
+</script>
+
+</body>
+</html>
